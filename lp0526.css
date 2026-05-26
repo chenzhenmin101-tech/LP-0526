@@ -1,0 +1,28 @@
+/* 整体容器：竖着排列图片用 */
+.image-shiritori {
+  max-width: 400px;    /* 整体宽度 */
+  margin: 0 auto;      /* 居中 */
+  display: flex;
+  flex-direction: column; /* 竖着排列！核心 */
+  gap: 20px;           /* 图片之间的间距 */
+  padding: 20px;
+}
+
+/* 每张图片样式 */
+.image-shiritori img {
+  width: 100%;           /* 充满容器 */
+  height: auto;
+  border-radius: 16px;   /* 圆角 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 3px solid #fff;
+  background: white;
+}
+
+/* 图片下面的文字（词/说明） */
+.image-word {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: -8px;
+}
