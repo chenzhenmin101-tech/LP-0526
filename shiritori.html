@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像しりとり</title>
+</head>
+<body>
+       <h1>画像しりとり</h1>
+        <p>画像を使ったしりとりゲームです。最後の文字が「ん」で終わる単語を入力するとゲームオーバーになります。</p>
+        <input type="text" id="wordInput" placeholder="単語を入力してください">
+        <button onclick="submitWord()">送信</button>
+        <div id="gameArea"></div>
+    
+        <script>
+            let lastChar = '';
+            const gameArea = document.getElementById('gameArea');
+    
+            function submitWord() {
+                const wordInput = document.getElementById('wordInput');
+                const word = wordInput.value.trim();
+                if (word === '') {
+                    alert('単語を入力してください');
+                    return;
+                }
+                if (lastChar && word[0] !== lastChar) {
+                    alert(`前の単語は「${lastChar}」で始まる必要があります`);
+                    return;
+                }
+                if (word.endsWith('ん')) {
+                    alert('ゲームオーバー！「ん」で終わる単語は使用できません');
+                    return;
+                }
+                lastChar = word[word.length - 1];
+                const img = document.createElement('img');
+                img.src = `https://source.unsplash.com/400x300/?${encodeURIComponent(word)}`;
+                img.alt = word;
+                gameArea.appendChild(img);
+                wordInput.value = '';
+            }
+        </script>   
+</body>
+</html>
